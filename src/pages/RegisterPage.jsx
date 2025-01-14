@@ -2,8 +2,8 @@ import React from 'react'
 
 export default function RegisterPage() {
   return (
-    <div>
-      
-    </div>
+    <form action="">
+        <h2>register</h2>
+    </form>
   )
 }

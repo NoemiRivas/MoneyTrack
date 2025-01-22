@@ -1,3 +1,4 @@
+import "./index.css"
 //reactdom
 import {BrowserRouter, Routes, Route} from "react-router-dom"
 //components
@@ -20,7 +21,7 @@ function App() {
       <Route path="/" element={<Dashboard/>} />{/* por el momento esta es la pagina inicial hasta que cree la landingpage y agrege la logica*/ }
       <Route path="/profile" element={<UserProfile/>}/>
       <Route path="/transactions" element={<TransactionsPage/>}/>
-      <Route path="/category" element={<CategoryPage/>}/>
+      <Route path="/categories" element={<CategoryPage/>}/>
       {/*LandingPage*/}
       </Routes>
     </BrowserRouter>

@@ -4,7 +4,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 export default function Navbar({ showSidebar, open }) {
   return (
-    <div className="bg-white w-full shadow-ms fixed top-0">
+    <div className="bg-white shadow-ms fixed top-0 left-0 right-0 z-50">
       <nav className=" m-auto w-[1200px]">
         {!open ? (
           <ul className="flex justify-between items-center gap-4 p-4 ">
@@ -23,9 +23,9 @@ export default function Navbar({ showSidebar, open }) {
             </li>
           </ul>
         ) : (
-          <ul className="flex justify-between items-center gap-4 p-4  max-sm:justify-end max-lg:justify-center ">
+          <ul className="flex justify-between items-center gap-4 p-4 max-sm:margin-bottom-4 mt-1 ml-2">
             <button className="btn">
-              <ArrowLeftIcon onClick={showSidebar} />{" "}
+              <ArrowLeftIcon onClick={showSidebar} />
             </button>
             <li className="max-md:hidden ">
               <SearchIcon className="fill-red-light cursor-pointer" />

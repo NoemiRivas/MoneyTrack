@@ -7,6 +7,7 @@ import ReceiptLongOutlinedIcon from '@mui/icons-material/ReceiptLongOutlined';
 import CategoryOutlinedIcon from '@mui/icons-material/CategoryOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
+import ShowChartOutlinedIcon from '@mui/icons-material/ShowChartOutlined';
 
 export default function Aside({ open }) {
   const listItems = [
@@ -30,11 +31,16 @@ export default function Aside({ open }) {
       address: "/profile",
       icon: <PersonOutlineOutlinedIcon />,
     },
+     {
+      name: "estadisticas",
+      address: "/estadisticas",
+      icon: <ShowChartOutlinedIcon />,
+    },
     {
       name: "ajustar ",
       address: "/settings",
       icon: <SettingsOutlinedIcon />,
-    },
+    }
   ];
 
 

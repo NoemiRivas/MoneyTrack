@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import Navbar from '../components/Navbar'
 import Aside from '../components/Aside'
 import Badget from "../components/dashboard-components/Badget";
-import Greeting from "../components/dashboard-components/Greeting";
 import Historial from "../components/dashboard-components/Historial";
-import FavCategories from "../components/dashboard-components/FavCategories";
+import RigthSidebar from "../components/RigthSidebar";
 
 
 export default function Dashboard() {
@@ -16,9 +15,8 @@ export default function Dashboard() {
   return (
     <main>
       <Navbar showSidebar={showSidebar} open={open} />
-      <Greeting/> 
+      <RigthSidebar/>
       <Badget/>
-      <FavCategories/>
       <Historial/>
       <Aside  open={open} />
      

@@ -1,4 +1,5 @@
 import React from "react";
+import ModalButton from "./ModalButton";
 
 
 export default function Greeting() {
@@ -11,7 +12,7 @@ export default function Greeting() {
       </div>
   
       <div className="ml-20">
-        <button className="btn"> agregar nuevo</button>
+        <ModalButton/>
       </div>
       <hr />
     </div>

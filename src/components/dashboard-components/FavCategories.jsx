@@ -4,9 +4,8 @@ import categories from "../../utils/categFake";
 
 export default function FavCategories() {
   return (
-<aside className="mt-8 py-2 max-w-[1200px]">
-        
-      <div className="flex justify-start items-center pl-8 max-sm:flex-col gap-6">
+<div className="mt-32 me-10 py-2 max-w-[400px] bg-white shadow-lg rounded-lg  mb-4 ">    
+      <div className="flex flex-col max-sm:flex-col gap-6">
         <h2> Categorias Favoritas</h2>
         <div className="text-4xl font-bold ml-0 flex gap-4">
           {categories.slice(0, 3).map((category) => (
@@ -19,6 +18,6 @@ export default function FavCategories() {
           ))}
         </div>
       </div>
-    </aside>
+    </div>
   );
 }

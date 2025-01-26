@@ -25,6 +25,8 @@ function App() {
       <Route path="/categories" element={<CategoryPage/>}/>
       <Route path="/estadisticas" element={<StatistichPage/>}/>
       {/*LandingPage*/}
+      {/* <Route path="/inicio" element={<LandingPage/>}/> */}
+      {/* <Route path="/settings" element={<settings/>}/> */}
       </Routes>
     </BrowserRouter>
   )

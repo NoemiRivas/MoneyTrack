@@ -1,14 +1,17 @@
 import React from "react";
-//grapfics
-import { PieChart } from '@mui/x-charts/PieChart';
-//data
+
+//components
+import Greeting from "./Greeting";
+import LefthSidebar from "../RigthSidebar";
+
 
 export default function Badget() {
   //fetch data from backend
 
   return (
-    <section className="py-6 max-w-[1200px] ">
-      <div className="flex justify-evenly items-center gap-6 max-md:flex-col max-md:gap-4">
+    <section className="py-6 max-w-[1000px] m-auto">
+        <Greeting/> 
+      <div className="flex items-center gap-6 max-md:flex-col max-md:gap-4">
         <div className="border-2 border-cool-green/50  rounded-2xl  py-6 p-24 text-center ">
           <p className=" text-2xl font-semibold capitalize text-cool-green">
             Entrada
@@ -18,7 +21,7 @@ export default function Badget() {
             $1400 {/* entrada dinamica */}{" "}
           </span>
         </div>
-        <div className="border-2 border-cool-red/50 rounded-2xl  py-6 p-24 text-center ">
+        <div className="border-2 border-cool-red/50 rounded-2xl  py-6 p-20 text-center ">
           <p className="text-2xl font-semibold capitalize text-cool-red">
             Gastos
           </p>

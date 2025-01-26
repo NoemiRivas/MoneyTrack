@@ -6,7 +6,7 @@ import listItems from '../../utils/listFake'
 export default function Historial() {
 
   return (
-  <div className='mt-24 py-6 max-w-[1200px] m-auto'>
+  <div className='mt-2 py-6 max-w-[1000px] m-auto'>
  <div className='flow-root'>
   <div className='overflow-x-auto'>
     <div className='inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8'>

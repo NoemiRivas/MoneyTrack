@@ -2,6 +2,8 @@
 import SearchIcon from "@mui/icons-material/Search";
 import MenuIcon from "@mui/icons-material/Menu";
 import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
+//components	
+import AvatarIcon from "./AvatarIcon";
 export default function Navbar({ showSidebar, open }) {
   return (
     <div className="bg-white shadow-ms fixed top-0 left-0 right-0 z-50">
@@ -19,7 +21,7 @@ export default function Navbar({ showSidebar, open }) {
               />
             </li>
             <li>
-              <h2 className="font-sans text-slate-700 ml-0">avatar</h2>
+              <AvatarIcon />
             </li>
           </ul>
         ) : (
@@ -35,9 +37,7 @@ export default function Navbar({ showSidebar, open }) {
               />
             </li>
             <li>
-              <h2 className="font-sans text-slate-700 ml-0 max-md:hidden">
-                avatar
-              </h2>
+            <AvatarIcon />
             </li>
           </ul>
         )}

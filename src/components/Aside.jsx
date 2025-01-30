@@ -13,7 +13,7 @@ export default function Aside({ open }) {
   const listItems = [
     {
       name: "Dahboard",
-      address: "/daschboard",
+      address: "/",
       icon: <DashboardCustomizeOutlinedIcon />,
     },
     {
@@ -23,7 +23,7 @@ export default function Aside({ open }) {
     },
     {
       name: "categorias",
-      address: "/",
+      address: "/categorias",
       icon: <CategoryOutlinedIcon />,
     },
     {

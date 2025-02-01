@@ -13,12 +13,17 @@ import StatistichPage from "./pages/StatistichPage";
 import Aside from "./components/Aside";
 //import LandingPage from "./pages/LandingPage"
 import Navbar from "./components/Navbar";
+// context
+import { AppProvider } from "./context/ContextApp";
+
+
 function App() {
   const [open, setOpen] = useState(false);
   const showSidebar = () => {
     setOpen(!open);
   };
   return (
+    <AppProvider> 
     <BrowserRouter>
       <Routes>
         <Route path="/register" element={<RegisterPage />} />
@@ -36,6 +41,7 @@ function App() {
       <Navbar showSidebar={showSidebar} open={open} />
       <Aside open={open} />
     </BrowserRouter>
+    </AppProvider>
   );
 }
 

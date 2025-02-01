@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useContext}  from 'react'
 
-//data
-import listItems from '../../utils/listFake'
+//context
+import { AppContext } from "../../context/ContextApp"; 
 
 export default function Historial() {
+ const {expenses}= useContext(AppContext)
 
-  return (
+
+return (
   <div className='mt-2 py-6 max-w-[1000px] m-auto'>
  <div className='flow-root'>
   <div className='overflow-x-auto'>
@@ -22,7 +24,7 @@ export default function Historial() {
           </tr>
         </thead>
         <tbody>
-          {listItems.map((item, index)=>(
+          {expenses.map((item, index)=>(
             <tr key={index}>
                <td className='whitespaces-nowrap py-5 pl-4 pr-3 text-sm sm:pl-0'>{item.date}</td>
               <td className='whitespaces-nowrap py-5 pl-4 pr-3 text-sm sm:pl-0'>{item.category}</td>

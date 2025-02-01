@@ -1,9 +1,27 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 //data
 import modelInfo from "../../utils/model-info";
+//context
+import { AppContext } from "../../context/ContextApp";
 
 export default function ModalButton() {
   const [showModal, setShowModal] = useState(false);
+  const { dispatch } = useContext(AppContext);
+
+  const [text, setText] = useState("");
+  const [cost, setCost] = useState("");
+
+  const onSubmit = (event) => {
+    event.preventDefault(); 
+    const expense = {
+      name: text,
+      cost: parseInt(cost),
+    };
+    dispatch({
+      type: "ADD_EXPENSE",
+      payload: expense,
+    });
+  };
 
   return (
     <>
@@ -26,24 +44,26 @@ export default function ModalButton() {
                   x
                 </span>
               </div>
-              {modelInfo.fields.map((field) => (
-                <div key={field.name} className="mb-4">
-                  <label
-                    htmlFor={field.name}
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    {field.label}
-                  </label>
-                  <input
-                    type={field.type}
-                    name={field.name}
-                    id={field.name}
-                    placeholder={field.placeholder}
-                    className="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                  />
-                </div>
-              ))}
-              <button className="btn">guardar</button>
+
+              <form className="mb-4" onSubmit={onSubmit}>
+                <label
+                  htmlFor="titulo"
+                  className="block text-sm font-medium text-gray-700"
+                ></label>titulo
+                <input type="text" name="titulo" id="titulo" value={text} placeholder="titulo de la entrada" className="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    onChange={(event) => setText(event.target.value)
+                     } />
+                         <label
+                  htmlFor="titulo"
+                  className="block text-sm font-medium text-gray-700"
+                ></label>Monto
+                <input type="text" name="titulo" id="titulo" value={cost} placeholder="titulo de la entrada" className="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    onChange={(event) => setCost(event.target.value)
+                     } />
+              </form>
+
+            
+              <button className="btn" type="submit">guardar</button>
             </div>
           </div>
         </>

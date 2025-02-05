@@ -43,7 +43,7 @@ exports.updateCategory = async (req, res) => {
       res.json(update);
     }
   } catch (error) {
-    res.status(404).json({ error: error.message });
+    res.status(500).json({ error: error.message });
   }
 };
 //delete

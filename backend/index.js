@@ -5,6 +5,7 @@ const dbConnect = require("./config/db")
 
 const Transactions = require("./routes/Transactions")
 const Category = require("./routes/category")
+const User = require("./routes/user")
 
 dbConnect()
 
@@ -16,6 +17,7 @@ app.get('/', (req, res) => {
 });
 app.use("/api/", Transactions)
 app.use("/api/", Category)
+app.use("/api/", User)
 
 
 const PORT = process.env.PORT || 3000;

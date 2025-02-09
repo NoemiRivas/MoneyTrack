@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 //data
 import modelInfo from "../../utils/model-info";
 //context
-import { AppContext } from "../../context/ContextApp";
+import  {AppContext} from "../../context/ContextApp";
 
 export default function ModalButton() {
   const [showModal, setShowModal] = useState(false);

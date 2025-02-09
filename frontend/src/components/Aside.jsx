@@ -13,7 +13,7 @@ export default function Aside({ open }) {
   const listItems = [
     {
       name: "Dahboard",
-      address: "/",
+      address: "/dashboard",
       icon: <DashboardCustomizeOutlinedIcon />,
     },
     {
@@ -28,7 +28,7 @@ export default function Aside({ open }) {
     },
     {
       name: "perfil",
-      address: "/profile",
+      address: "/perfil",
       icon: <PersonOutlineOutlinedIcon />,
     },
      {

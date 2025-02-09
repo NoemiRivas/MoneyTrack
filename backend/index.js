@@ -2,7 +2,7 @@ require("dotenv").config()
 const express = require("express")
 const mongoose = require("mongoose")
 const dbConnect = require("./config/db")
-
+const cors = require("cors");
 const Transactions = require("./routes/Transactions")
 const Category = require("./routes/category")
 const User = require("./routes/user")
@@ -11,6 +11,8 @@ dbConnect()
 
 
 const app = express()
+app.use(cors());
+
 app.use(express.json());
 app.get('/', (req, res) => {
   res.send('Hello world!');

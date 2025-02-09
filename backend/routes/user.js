@@ -3,7 +3,7 @@ const authMiddleware = require("../middleware/authMiddleware");
 const {createUser, updateUser, delateUser, getAllUser, loginUser, profileUser  }= require("../controller/user")
 
 
-router.get("/user", createUser)
+router.post("/user", createUser)
 router.put("/user/:id", updateUser)
 router.get("/all-users", getAllUser)
 router.delete("/user/:id", delateUser)

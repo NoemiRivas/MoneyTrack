@@ -9,9 +9,16 @@ import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-export default function AvatarIcon() {
+import { useContext } from "react";
+import { AppContext } from "../context/ContextApp";
+
+export default function AvatarIcon({ user }) {
+
+  const { logout } = useContext(AppContext);
+  const navigate = useNavigate()
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -19,6 +26,21 @@ export default function AvatarIcon() {
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+  const handleLogout = () => {
+    handleClose(); 
+    logout(); 
+    navigate("/login"); 
+  };
+  const getInitials = (nombre) => {
+    if (!nombre) return "U"
+    return nombre
+      ? nombre
+          .split(" ")
+          .map((n) => n[0])
+          .join("")
+          .toUpperCase()
+      : "U";
   };
   return (
     <React.Fragment>
@@ -32,7 +54,13 @@ export default function AvatarIcon() {
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
           >
-            <Avatar sx={{ width: 40, height: 40 }}>N</Avatar>
+            <Avatar
+              alt={user?.nombre || "Usuario"}
+              src={user?.avatar || ""}
+              sx={{ width: 40, height: 40 }}
+            >
+              {!user?.avatar && getInitials(user?.nombre)}
+            </Avatar>
           </IconButton>
         </Tooltip>
       </Box>
@@ -73,11 +101,11 @@ export default function AvatarIcon() {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <Link to="/profile">
-          <MenuItem onClick={handleClose}>
-            <Avatar /> Perfil
+        
+          <MenuItem onClick={handleClose} component={Link} to="/perfil">
+            <Avatar sx={{ width: 32, height: 32 }}/> Perfil
           </MenuItem>
-        </Link>
+       
 
         <Divider />
 
@@ -88,7 +116,7 @@ export default function AvatarIcon() {
           {/**link */}
           Herramientas
         </MenuItem>
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={handleLogout}>
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>

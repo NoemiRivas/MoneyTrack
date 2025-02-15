@@ -4,7 +4,13 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 //components	
 import AvatarIcon from "./AvatarIcon";
+import { useContext } from "react";
+import { AppContext } from "../context/ContextApp";
+
+
 export default function Navbar({ showSidebar, open }) {
+  const { user } = useContext(AppContext);
+
   return (
     <div className="bg-white shadow-ms fixed top-0 left-0 right-0 z-50">
       <nav className=" m-auto w-[1200px]">
@@ -21,7 +27,7 @@ export default function Navbar({ showSidebar, open }) {
               />
             </li>
             <li>
-              <AvatarIcon />
+              <AvatarIcon user={user}/>
             </li>
           </ul>
         ) : (
@@ -37,7 +43,7 @@ export default function Navbar({ showSidebar, open }) {
               />
             </li>
             <li>
-            <AvatarIcon />
+            <AvatarIcon user={user} />
             </li>
           </ul>
         )}

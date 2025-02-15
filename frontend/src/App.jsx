@@ -53,7 +53,7 @@ function AppContent({ showSidebar, open }) {
         {/* <Route path="/inicio" element={<LandingPage/>}/> */}
         {/* <Route path="/settings" element={<settings/>}/> */}
       </Routes>
-      <Navbar showSidebar={showSidebar} open={open} />
+      {/**<Navbar showSidebar={showSidebar} open={open} /> */} 
       <Aside open={open} />
     </>
   );

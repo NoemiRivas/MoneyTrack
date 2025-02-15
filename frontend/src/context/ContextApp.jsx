@@ -90,7 +90,7 @@ export const AppProvider = ({ children }) => {
       navigate("/perfil");
     } catch (error) {
       console.error("Error en el login:", error.response?.data);
-      setError(error.response?.data?.message);
+      throw new Error(error.response?.data?.message || "Error de autenticación");
     }
   };
 

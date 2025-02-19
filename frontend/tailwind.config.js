@@ -13,7 +13,8 @@ export default {
       "violet-extra-light":"#5f4667",
       "background":"#340230",
       "ligth-background":"#16161659",
-      "button":"#db265a"
+      "button":"#db265a",
+      "orange":"#f47a3b"
     },
     fontFamily:{
       "sans": "DM Sans"

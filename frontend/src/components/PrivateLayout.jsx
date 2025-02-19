@@ -13,9 +13,9 @@ export default function PrivateLayout() {
   return (
     <div>
       <div className="private-layout">
-        <Navbar showSidebar={showSidebar} open={open} />
+        <Navbar  />
         <div className="content">
-          <Aside open={open} />
+          <Aside showSidebar={showSidebar} open={open}  />
           <main className="main-content">
             <Outlet />
           </main>

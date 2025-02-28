@@ -4,11 +4,12 @@
 
 body {
     margin: auto;
+    background-color: #e8eaec;
 
 }
 
 section {
-    max-width: 800px;
+    max-width: 1000px;
     margin: auto;
 
 }
@@ -22,6 +23,13 @@ section {
 }
 
 /*table*/
+.table th {
+    @apply text-left capitalize font-semibold text-ligth-background text-base px-4 py-2 border-b-2 border-cool-gray;
+}
+
+.table td {
+    @apply text-sm font-normal text-black-slate px-4 py-2 border-b border-cool-gray;
+}
 
 /* Aside */
 .aside {
@@ -40,15 +48,9 @@ section {
 
 
 /* button */
-.btn {
-    display: inline-block;
-    padding: 4px;
-    border-radius: 0.25rem;
-    color: #f2f2f2;
-    background-color: #988686;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    z-index: 2;
+
+.button-secondary {
+    @apply border border-cool-gray shadow-sm text-sm p-2 rounded-lg text-black-slate font-medium hover:bg-black-slate hover:text-white
 }
 
 .button-form:hover {
@@ -69,4 +71,13 @@ section {
 
 .btn:hover {
     background-color: #4a5568;
+}
+
+/*input select*/
+
+.input-select {
+   @apply absolute  w-40 bg-white shadow-lg z-10;
+}
+.input-select span{
+    @apply block w-full px-4 py-2 text-left cursor-pointer hover:bg-black-slate hover:text-white
 }

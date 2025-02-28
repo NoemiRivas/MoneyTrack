@@ -3,9 +3,9 @@ const Transactions = require("../models/transactions");
 //create
 exports.createTransaction = async (req, res) => {
   try {
-    const { userId, type, amount, category, description } = req.body;
+    const { title, type, amount, category, description } = req.body;
     const newTransactions = new Transactions({
-      userId,
+      title,
       type,
       amount,
       category,

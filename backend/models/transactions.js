@@ -1,12 +1,12 @@
 const mongoose=require("mongoose")
 const transactionSchema= new mongoose.Schema({
-  userId:{
-    type: String,//mongoose.Schema.Types.ObjectId
-    ref:"User",
+  title:{
+    type: String,
     required: true,
+    
   },type: {
     type: String,
-    enum: ['income', 'expense'],
+    enum: ['gasto', 'ingreso'],
     required: true,
   },  amount: {
     type: Number,

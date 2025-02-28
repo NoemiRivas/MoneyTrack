@@ -1,44 +1,87 @@
-import React, { useContext}  from 'react'
+import React, { useContext, useEffect, useState } from "react";
 
 //context
-import { AppContext } from "../../context/ContextApp"; 
+import { AppContext } from "../../context/ContextApp";
+//components
+import FilterButton from "./filterButton";
+import SortButton from "./SortButton";
 
 export default function Historial() {
- const {expenses}= useContext(AppContext)
+  const { ingreso, gasto, getIncome } = useContext(AppContext);
+  const [filtrado, setFiltrado] = useState([]);
+  const [type, setType] = useState("todos");
 
+  useEffect(() => {
+    getIncome();
+  }, []);
 
-return (
-  <div className='mt-2 py-6 max-w-[1000px] m-auto'>
- <div className='flow-root'>
-  <div className='overflow-x-auto'>
-    <div className='inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8'>
-      <h2 className='text-4xl font-semibold mb-4'>Historial de transacciones</h2>
-      <table className='min-w-full divide-y divide-gray-200'>
-        <thead>
-          <tr className='capitalize font-semibold text-gray-500'> 
-              <th className='px-3 py-3.5 text-left'>fecha</th>
-            <th scope='col' className='py-3.5 pl-4 pr-3 text-left sm:pl-0'>categoria</th>
-            <th className='px-3 py-3.5 text-left'>Metodo de pago</th>
-            <th className='px-3 py-3.5 text-left'>Costo</th>
-         
-          </tr>
-        </thead>
-        <tbody>
-          {expenses.map((item, index)=>(
-            <tr key={index}>
-               <td className='whitespaces-nowrap py-5 pl-4 pr-3 text-sm sm:pl-0'>{item.date}</td>
-              <td className='whitespaces-nowrap py-5 pl-4 pr-3 text-sm sm:pl-0'>{item.category}</td>
-              <td className='whitespaces-nowrap py-5 pl-4 pr-3 text-sm sm:pl-0'>{item.payMethod}</td>
-              <td className='whitespaces-nowrap py-5 pl-4 pr-3 text-sm sm:pl-0'> ${item.cost}</td>
-             
-            </tr>
-          ))  }
-        </tbody>
+  useEffect(() => {
+    if (type === "ingreso") {
+      setFiltrado(ingreso);
+    } else if (type === "gasto") {
+      setFiltrado(gasto);
+    } else {
+      setFiltrado([...ingreso, ...gasto]); // Mostrar todo
+    }
+  }, [ingreso, gasto, type]);
 
-      </table>
-      </div>
-      </div>
+  return (
+    <div className="m-auto mt-4 py-6 max-w-[1000px] max-[1800px]:ml-24 max-lg:m-auto bg-white rounded-lg">
+      <div className="flow-root">
+        <div className="overflow-x-auto">
+          <div className="py-2 lg:w-[800px] lg:px-8 md:w-[600px] md:m-auto sm:px-6">
+            <div className="flex justify-between">
+              <div>
+                <h2 className="font-semibold capitalize text-lg">
+                  Historial de transacciones
+                </h2>
+                <p className="text-sm text-cool-gray mb-4">
+                  Tus transacciones más recientes
+                </p>
+              </div>
+              {/* Filtro */}
+              <div className="flex items-center gap-2">
+                {" "}
+                <div>
+                  <SortButton filtrado={filtrado} setFiltrado={setFiltrado} />
+                </div>
+                <div >
+                  <FilterButton setType={setType} type={type} />
+                </div>
+              </div>
+            </div>
+            {/* Tabla de transacciones */}
+            <table className="table w-full border-separate lg:border-collapse border border-cool-gray">
+              <thead>
+                <tr>
+                  <th>Fecha</th>
+                  <th>Categoría</th>
+                  <th>Tipo</th>
+                  <th>Costo</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filtrado.length > 0 ? (
+                  filtrado.map((item, index) => (
+                    <tr key={index}>
+                      <td>{item.date || "Sin fecha"}</td>
+                      <td>{item.category || "Sin categoría"}</td>
+                      <td>{item.type || item.payMethod || "N/A"}</td>
+                      <td>${item.amount || item.cost || 0}</td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan="4" className="text-center text-gray-500">
+                      No hay transacciones disponibles
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
-  )
+  );
 }

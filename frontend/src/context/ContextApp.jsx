@@ -58,7 +58,47 @@ const appReducer = (state, action) => {
 
 export const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(appReducer, initialState);
+  //incomes
+  const [ingreso, setIngreso] = useState([]);
+  const [gasto, setGasto] = useState([]);
+  const [errors, setErrors] = useState(null);
+//create
+  const addIncome = async (title,type,amount,category,description) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/transactions",
+        {
+          title: String(title).trim() || "Sin título",  // Evita errores de conversión
+          type: String(type).trim(),
+          amount: parseFloat(amount) || 0,  // Asegura que sea un número
+          category: String(category).trim(),
+          description: description ? String(description).trim() : "",
+        }
+      );
  
+      console.log("✅ Transacción guardada:", response.data);
+      await getIncome(); 
+      dispatch({
+        type: "ADD_TRANSACTION",
+        payload: response.data,
+      });
+
+    } catch (error) {
+      console.error(
+        "❌ Error al registrar la transacción:",
+        error.response?.data || error.message
+      );
+      alert("Error al guardar la transacción. Intenta de nuevo.");
+    }
+  };
+  //getHistory
+  const getIncome = async () => {
+    const response = await axios.get("http://localhost:3000/api/all-transactions")
+    const ingresos = response.data.filter((t) => t.type === "ingreso");
+    const gastos = response.data.filter((t) => t.type === "gasto");
+    setIngreso(ingresos)
+    setGasto(gastos)
+  }
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -77,9 +117,10 @@ export const AppProvider = ({ children }) => {
     }
   }, []);
 
+  //user
+
   const login = async (email, password, navigate) => {
     try {
-  
       const response = await axios.post("http://localhost:3000/api/login", {
         email,
         password,
@@ -91,7 +132,9 @@ export const AppProvider = ({ children }) => {
       navigate("/perfil");
     } catch (error) {
       console.error("Error en el login:", error.response?.data);
-      throw new Error(error.response?.data?.message || "Error de autenticación");
+      throw new Error(
+        error.response?.data?.message || "Error de autenticación"
+      );
     }
   };
 
@@ -101,7 +144,9 @@ export const AppProvider = ({ children }) => {
   };
 
   return (
-    <AppContext.Provider value={{ ...state, login, logout, dispatch }}>
+    <AppContext.Provider
+      value={{ ...state, login, logout, dispatch, addIncome, getIncome, ingreso, gasto }}
+    >
       {children}
     </AppContext.Provider>
   );

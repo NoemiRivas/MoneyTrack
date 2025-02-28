@@ -16,9 +16,9 @@ export default function Table() {
   }
 
   return (
-    <div className="mt-40 max-w-[1000px] m-auto">
+    <div className="mt-40 max-w-[800px] m-auto ">
       <div className="flow-root">
-        <div className="overflow-auto  bg-white">
+        <div className="overflow-auto ">
           <div className="inline-block min-w-full sm:px-6 lg:px-8 ">
             <h2 className="text-4xl font-semibold mb-4">
               Historial de transacciones
